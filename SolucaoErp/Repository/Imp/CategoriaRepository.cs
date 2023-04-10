@@ -15,7 +15,9 @@ public class CategoriaRepository : ICategoriaRepository
 
     public bool AtualizarCategoria(Categoria categoria, int id)
     {
-        throw new NotImplementedException();
+        _categoria.Update(categoria);
+        _repositoryContext.SaveChanges();
+        return true;
     }
 
     public Categoria BuscaPorId(int id) => _categoria.Where(p => p.Id == id).FirstOrDefault();

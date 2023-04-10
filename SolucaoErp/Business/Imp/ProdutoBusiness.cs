@@ -2,6 +2,7 @@
 using SolucaoErp.Configuration.ErrorsApi;
 using SolucaoErp.Controllers.Requests.Produto;
 using SolucaoErp.Model;
+using SolucaoErp.Repository.Imp;
 using SolucaoErp.Repository.Interfaces;
 
 namespace SolucaoErp.Business.Imp;
@@ -17,6 +18,20 @@ public class ProdutoBusiness : IProdutoBusiness
         _categoriaRepository = categoriaRepository;
     }
 
+    public bool AtualizaProduto(SalvarProdutoPost produto, int id)
+    {
+        var banco = _produtoRepository.BuscaPorId(id);
+        if (banco == null)
+            throw new ApiException("Produto não encontrado no banco para ser atualizado");
+        var outroProduto = _produtoRepository.BuscaPorNome(produto.Nome);
+        if (outroProduto != null && outroProduto.Id != id)
+            throw new ApiException("Existe outro produto com este mesmo nome");
+        banco.Nome = produto.Nome;
+        //banco.Categoria = produto.Categoria;
+        _produtoRepository.AtualizarProduto(banco);
+        return true;
+    }
+
     public bool DeleteProduto(int id)
     {
         var produto = _produtoRepository.BuscaPorId(id);
@@ -26,10 +41,14 @@ public class ProdutoBusiness : IProdutoBusiness
         return true;
     }
 
+    public Produto GetProduto(int id)
+    {
+        return _produtoRepository.BuscaPorId(id);
+    }
+
     public IEnumerable<Produto> GetProdutos()
     {
         return _produtoRepository.GetAll();
-
     }
 
     public Produto SalvarProduto(SalvarProdutoPost p)

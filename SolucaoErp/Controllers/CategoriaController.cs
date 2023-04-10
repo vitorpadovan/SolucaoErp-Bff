@@ -29,6 +29,18 @@ public class CategoriaController : ControllerBase
     {
         return _categoriaBusiness.GetCategorias();
     }
+    [HttpGet("{id}")]
+    public Categoria GetCategorias(int id)
+    {
+        return _categoriaBusiness.GetCategoria(id);
+    }
+
+    [HttpPut("{id}")]
+    public Categoria AtualizarCategoria(Categoria c, int id)
+    {
+        _categoriaBusiness.AtualizarCategoria(c, id);
+        return c;
+    }
 
     [HttpDelete("{id}")]
     public void Delete(int id)

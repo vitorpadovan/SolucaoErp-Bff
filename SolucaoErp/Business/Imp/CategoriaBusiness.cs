@@ -8,9 +8,11 @@ namespace SolucaoErp.Business.Imp;
 public class CategoriaBusiness : ICategoriaBusiness
 {
     private readonly ICategoriaRepository _categoriaRepository;
-    public CategoriaBusiness(ICategoriaRepository categoriaRepository)
+    private readonly IProdutoRepository _produtoRepository;
+    public CategoriaBusiness(ICategoriaRepository categoriaRepository, IProdutoRepository produtoRepository)
     {
         _categoriaRepository = categoriaRepository;
+        _produtoRepository = produtoRepository;
     }
 
     public bool AtualizarCategoria(Categoria categoria, int id)
@@ -24,7 +26,8 @@ public class CategoriaBusiness : ICategoriaBusiness
                 throw new ApiException($@"Categoria com o código {outraCategoria.Id} já possui o nome que você está querendo aplicar para a categoria {id}");
         if (categoria.Id != null && categoria.Id != id)
             throw new ApiException("Id da categoria enviada é diferente da categoria a ser alterada");
-        _categoriaRepository.Salvar(categoria);
+        banco.Nome = categoria.Nome;
+        _categoriaRepository.AtualizarCategoria(banco, id);
         return true;
     }
 
@@ -33,8 +36,15 @@ public class CategoriaBusiness : ICategoriaBusiness
         var categoria = this._categoriaRepository.BuscaPorId(id);
         if (categoria == null)
             throw new ApiException($@"Categoria com o código {id} não existe no banco ou já foi deletada");
-        //TODO implementar a negação de deleção de categorias já associadas
+        var produtosAssociados = this._produtoRepository.GetProdutosPorCategoria(id);
+        if(produtosAssociados != null && produtosAssociados.Count() > 0)
+            throw new ApiException($@"Categoria com o código {id} possui {produtosAssociados.Count()} produtos associados e não pode ser deletado");
         return this._categoriaRepository.DeletarCategoria(categoria);
+    }
+
+    public Categoria GetCategoria(int id)
+    {
+        return _categoriaRepository.BuscaPorId(id);
     }
 
     public IEnumerable<Categoria> GetCategorias()

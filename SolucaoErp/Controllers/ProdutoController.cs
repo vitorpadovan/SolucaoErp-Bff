@@ -17,10 +17,16 @@ public class ProdutoController
         _produtoBusiness = produtoBusiness;
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
+    [HttpGet]
     public IEnumerable<Produto> GetProdutos()
     {
         return _produtoBusiness.GetProdutos();
+    }
+
+    [HttpGet("{id}")]
+    public Produto GetProduto(int id)
+    {
+        return _produtoBusiness.GetProduto(id);
     }
 
     [HttpPost]
@@ -33,5 +39,11 @@ public class ProdutoController
     public void DeleteProduto(int id)
     {
         _produtoBusiness.DeleteProduto(id);
+    }
+
+    [HttpPut("{id}")]
+    public void AtualizaProduto(SalvarProdutoPost produto, int id)
+    {
+        _produtoBusiness.AtualizaProduto(produto,id);
     }
 }
