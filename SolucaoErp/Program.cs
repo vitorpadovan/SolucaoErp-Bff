@@ -1,11 +1,21 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SolucaoErp.Configuration;
+using SolucaoErp.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+InjectionConfiguration.AddInjectionDependency(builder.Services);
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
+builder.Services.AddDbContext<RepositoryContext>(options=>options.UseMySql(RepositoryContext.dadosDeAcesso(), ServerVersion.AutoDetect(RepositoryContext.dadosDeAcesso())));
+builder.Services.AddMvc(options =>
+{
+    options.Filters.Add(typeof(ActionHandlersAttribute));
+});
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -19,5 +29,10 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(x => x.AllowAnyMethod()
+.AllowAnyHeader()
+.SetIsOriginAllowed(origin => true)
+.AllowCredentials());
 
 app.Run();
