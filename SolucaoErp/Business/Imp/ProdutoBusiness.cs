@@ -26,8 +26,9 @@ public class ProdutoBusiness : IProdutoBusiness
         var outroProduto = _produtoRepository.BuscaPorNome(produto.Nome);
         if (outroProduto != null && outroProduto.Id != id)
             throw new ApiException("Existe outro produto com este mesmo nome");
+        var categoriaSelecionada = _categoriaRepository.BuscaPorId(produto.Categoria.Value);
         banco.Nome = produto.Nome;
-        //banco.Categoria = produto.Categoria;
+        banco.Categoria = categoriaSelecionada;
         _produtoRepository.AtualizarProduto(banco);
         return true;
     }
