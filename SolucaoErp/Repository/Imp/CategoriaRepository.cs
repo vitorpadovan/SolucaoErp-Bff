@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SolucaoErp.Model;
+using SolucaoErpDomain.Model;
 using SolucaoErp.Repository.Interfaces;
+using SolucaoErpDomain.Configurations;
 
 namespace SolucaoErp.Repository.Imp;
-public class CategoriaRepository : ICategoriaRepository
+public class CategoriaRepository : ICategoriaRepository, IScopedDependecy<ICategoriaRepository, CategoriaRepository>
 {
     private readonly RepositoryContext _repositoryContext;
     private readonly DbSet<Categoria> _categoria;

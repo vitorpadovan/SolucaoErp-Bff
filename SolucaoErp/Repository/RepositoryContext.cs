@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SolucaoErp.Model;
+using SolucaoErpDomain.Model;
 using SolucaoErp.Repository.Config;
 
 namespace SolucaoErp.Repository

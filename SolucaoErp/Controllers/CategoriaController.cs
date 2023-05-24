@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SolucaoErp.Business.Interfaces;
 using SolucaoErp.Controllers.Requests.Categoria;
-using SolucaoErp.Model;
+using SolucaoErpDomain.Model;
 using SolucaoErp.Repository.Interfaces;
 using System.Xml.Serialization;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace SolucaoErp.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class CategoriaController : ControllerBase
 {
     private readonly ICategoriaBusiness _categoriaBusiness;
@@ -25,11 +28,13 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public IEnumerable<Categoria> GetCategorias()
     {
         return _categoriaBusiness.GetCategorias();
     }
     [HttpGet("{id}")]
+    [AllowAnonymous]
     public Categoria GetCategorias(int id)
     {
         return _categoriaBusiness.GetCategoria(id);

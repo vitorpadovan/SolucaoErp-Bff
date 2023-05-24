@@ -1,4 +1,4 @@
-﻿using SolucaoErp.Model;
+﻿using SolucaoErpDomain.Model;
 
 namespace SolucaoErp.Repository.Interfaces;
 public interface ICategoriaRepository

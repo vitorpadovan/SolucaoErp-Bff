@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SolucaoErp.Business.Interfaces;
 using SolucaoErp.Controllers.Requests;
 using SolucaoErp.Controllers.Requests.Produto;
-using SolucaoErp.Model;
+using SolucaoErpDomain.Model;
 
 namespace SolucaoErp.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class ProdutoController
 {
     private readonly IProdutoBusiness _produtoBusiness;
@@ -18,15 +21,24 @@ public class ProdutoController
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public IEnumerable<Produto> GetProdutos()
     {
         return _produtoBusiness.GetProdutos();
     }
 
     [HttpGet("{id}")]
+    [AllowAnonymous]
     public Produto GetProduto(int id)
     {
         return _produtoBusiness.GetProduto(id);
+    }
+
+    [HttpGet("barcode/{id}")]
+    [AllowAnonymous]
+    public Produto GetProdutoPorCodBarras(string id)
+    {
+        return _produtoBusiness.GetProdutoPorCodBarras(id);
     }
 
     [HttpPost]

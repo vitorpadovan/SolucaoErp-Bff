@@ -1,5 +1,5 @@
 ﻿using SolucaoErp.Controllers.Requests.Categoria;
-using SolucaoErp.Model;
+using SolucaoErpDomain.Model;
 
 namespace SolucaoErp.Business.Interfaces;
 public interface ICategoriaBusiness

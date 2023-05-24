@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SolucaoErp.Model;
+using SolucaoErpDomain.Model;
 using SolucaoErp.Repository.Interfaces;
+using SolucaoErpDomain.Configurations;
 
 namespace SolucaoErp.Repository.Imp;
-public class ProdutoRepository : IProdutoRepository
+public class ProdutoRepository : IProdutoRepository, IScopedDependecy<IProdutoRepository, ProdutoRepository>
 {
+    //: ICategoriaBusiness, IScopedDependecy<ICategoriaBusiness, CategoriaBusiness>
 
     private readonly RepositoryContext _repositoryContext;
     private readonly DbSet<Produto> _produtos;
@@ -23,6 +25,8 @@ public class ProdutoRepository : IProdutoRepository
     public Produto BuscaPorId(int id) => _produtos.Where(p => p.Id == id).Include(p=>p.Categoria).FirstOrDefault();
 
     public Produto BuscaPorNome(string nome) => _produtos.Where(p => p.Nome == nome).FirstOrDefault();
+
+    public Produto BuscarPorCodBarras(string id) => _produtos.Where(p => p.CodigoBarras == id).FirstOrDefault();
 
     public bool DeleteProduto(Produto produto)
     {

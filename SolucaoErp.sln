@@ -5,6 +5,16 @@ VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolucaoErp", "SolucaoErp\SolucaoErp.csproj", "{82A2401B-DFAF-42F8-B96B-068D503192FC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolucaoErpDomain", "SolucaoErpDomain\SolucaoErpDomain.csproj", "{8A1625F3-C8D0-4FEB-A712-3FCD95705FCA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolucaoErpAuth", "SolucaoErpAuth\SolucaoErpAuth.csproj", "{8A4D6152-AAFD-4EE5-8812-F68A45CE3A38}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arquivos Solução", "Arquivos Solução", "{A83897ED-21A9-4E14-8FF2-BC9719E5F71A}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,14 @@ Global
 		{82A2401B-DFAF-42F8-B96B-068D503192FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82A2401B-DFAF-42F8-B96B-068D503192FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82A2401B-DFAF-42F8-B96B-068D503192FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A1625F3-C8D0-4FEB-A712-3FCD95705FCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A1625F3-C8D0-4FEB-A712-3FCD95705FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A1625F3-C8D0-4FEB-A712-3FCD95705FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A1625F3-C8D0-4FEB-A712-3FCD95705FCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A4D6152-AAFD-4EE5-8812-F68A45CE3A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A4D6152-AAFD-4EE5-8812-F68A45CE3A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A4D6152-AAFD-4EE5-8812-F68A45CE3A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A4D6152-AAFD-4EE5-8812-F68A45CE3A38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

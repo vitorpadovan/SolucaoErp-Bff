@@ -1,12 +1,14 @@
 ﻿using SolucaoErp.Business.Interfaces;
 using SolucaoErp.Configuration.ErrorsApi;
 using SolucaoErp.Controllers.Requests.Produto;
-using SolucaoErp.Model;
+using SolucaoErpDomain.Model;
 using SolucaoErp.Repository.Imp;
 using SolucaoErp.Repository.Interfaces;
+using SolucaoErpDomain.Configurations;
+using SolucaoErpDomain.Exceptions;
 
 namespace SolucaoErp.Business.Imp;
-public class ProdutoBusiness : IProdutoBusiness
+public class ProdutoBusiness : IProdutoBusiness, IScopedDependecy<IProdutoBusiness, ProdutoBusiness>
 {
 
     private readonly IProdutoRepository _produtoRepository;
@@ -45,6 +47,26 @@ public class ProdutoBusiness : IProdutoBusiness
     public Produto GetProduto(int id)
     {
         return _produtoRepository.BuscaPorId(id);
+    }
+
+    public Produto GetProdutoPorCodBarras(string id)
+    {
+        return this.GetProdutoPorCodBarras(id, false);
+    }
+
+    public Produto GetProdutoPorCodBarras(string id, bool forcarPesquisa)
+    {
+        var produto = _produtoRepository.BuscarPorCodBarras(id);
+        if (produto != null)
+            return produto;
+        if (forcarPesquisa)
+            EnviarParaCosmosService(id);
+        throw new NotFoundAppException("Não foi encontrado");
+    }
+
+    private void EnviarParaCosmosService(string codBarras)
+    {
+        //TODO implementar este cara
     }
 
     public IEnumerable<Produto> GetProdutos()

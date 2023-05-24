@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SolucaoErp.Model;
+using SolucaoErpDomain.Model;
 
 namespace SolucaoErp.Repository.Config;
 public class DbProdutoCgf : DbCfg<Produto>

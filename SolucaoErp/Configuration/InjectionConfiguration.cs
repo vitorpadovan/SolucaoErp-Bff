@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SolucaoErp.Business.Imp;
 using SolucaoErp.Business.Interfaces;
-using SolucaoErp.Model;
+using SolucaoErpDomain.Model;
 using SolucaoErp.Repository;
 using SolucaoErp.Repository.Imp;
 using SolucaoErp.Repository.Interfaces;

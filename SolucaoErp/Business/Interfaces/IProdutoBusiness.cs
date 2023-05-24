@@ -1,5 +1,5 @@
 ﻿using SolucaoErp.Controllers.Requests.Produto;
-using SolucaoErp.Model;
+using SolucaoErpDomain.Model;
 
 namespace SolucaoErp.Business.Interfaces;
 public interface IProdutoBusiness
@@ -9,4 +9,6 @@ public interface IProdutoBusiness
     public bool DeleteProduto(int id);
     public bool AtualizaProduto(SalvarProdutoPost produto, int id);
     public Produto GetProduto(int id);
+    public Produto GetProdutoPorCodBarras(string id);
+    public Produto GetProdutoPorCodBarras(string id, Boolean forcarPesquisa);
 }

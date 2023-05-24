@@ -1,11 +1,12 @@
 ﻿using SolucaoErp.Business.Interfaces;
 using SolucaoErp.Configuration.ErrorsApi;
 using SolucaoErp.Controllers.Requests.Categoria;
-using SolucaoErp.Model;
+using SolucaoErpDomain.Model;
 using SolucaoErp.Repository.Interfaces;
+using SolucaoErpDomain.Configurations;
 
 namespace SolucaoErp.Business.Imp;
-public class CategoriaBusiness : ICategoriaBusiness
+public class CategoriaBusiness : ICategoriaBusiness, IScopedDependecy<ICategoriaBusiness, CategoriaBusiness>
 {
     private readonly ICategoriaRepository _categoriaRepository;
     private readonly IProdutoRepository _produtoRepository;

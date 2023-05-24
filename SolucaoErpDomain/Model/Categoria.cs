@@ -1,4 +1,4 @@
-﻿namespace SolucaoErp.Model;
+﻿namespace SolucaoErpDomain.Model;
 public class Categoria
 {
     public int Id { get; set; }

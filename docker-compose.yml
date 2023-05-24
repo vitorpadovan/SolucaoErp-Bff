@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  importproduct:
+    image: ${DOCKER_REGISTRY-}importproduct
+    build:
+      context: .
+      dockerfile: ImportProduct/Dockerfile
+
+  solucaoerp:
+    image: ${DOCKER_REGISTRY-}solucaoerp
+    build:
+      context: .
+      dockerfile: SolucaoErp/Dockerfile
+
