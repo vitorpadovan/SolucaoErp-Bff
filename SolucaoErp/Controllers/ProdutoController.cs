@@ -31,7 +31,10 @@ public class ProdutoController
     [AllowAnonymous]
     public Produto GetProduto(int id)
     {
-        return _produtoBusiness.GetProduto(id);
+        var produto = _produtoBusiness.GetProduto(id);
+        if (produto == null)
+            throw new Exception("Produto não existem");
+        return produto;
     }
 
     [HttpGet("barcode/{id}")]

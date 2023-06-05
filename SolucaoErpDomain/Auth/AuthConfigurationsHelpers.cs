@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
-internal static class AuthConfigurationsHelpers
+namespace SolucaoErpDomain.Auth;
+public static class AuthConfigurationsHelpers
 {
     public static Action<AuthenticationOptions> authOptions = options =>
     {

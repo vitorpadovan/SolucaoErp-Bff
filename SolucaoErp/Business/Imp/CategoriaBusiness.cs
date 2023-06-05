@@ -45,7 +45,10 @@ public class CategoriaBusiness : ICategoriaBusiness, IScopedDependecy<ICategoria
 
     public Categoria GetCategoria(int id)
     {
-        return _categoriaRepository.BuscaPorId(id);
+        var categoria = _categoriaRepository.BuscaPorId(id);
+        if (categoria == null)
+            throw new NotFoundException("Categoria não existe");
+        return categoria;
     }
 
     public IEnumerable<Categoria> GetCategorias()

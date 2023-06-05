@@ -31,11 +31,21 @@ namespace SolucaoErp.Configuration
 
         public override void OnActionExecuted(ActionExecutedContext context)
         {
+            if(context.Exception is NotFoundException)
+            {
+                var apiException = (ApiException)context.Exception;
+                var errorResponse = new ResponseData() { Successful = false, Message = "Erro generalizado da API", codError = 1 };
+                var errorModel = new ErrorModel() { Message = apiException.Message };
+                errorResponse.Error.Add(errorModel);
+                context.Result = new NotFoundObjectResult(errorResponse);
+                context.ExceptionHandled = true;
+                return;
+            }
             if (context.Exception is ApiException)
             {
-                var apiException  = (ApiException)context.Exception;
+                var apiException = (ApiException)context.Exception;
                 var errorResponse = new ResponseData() { Successful = false, Message = "Erro generalizado da API", codError = 1 };
-                var errorModel = new ErrorModel() {Message = apiException.Message };
+                var errorModel = new ErrorModel() { Message = apiException.Message };
                 errorResponse.Error.Add(errorModel);
                 context.Result = new BadRequestObjectResult(errorResponse);
                 context.ExceptionHandled = true;

@@ -39,14 +39,17 @@ public class ProdutoBusiness : IProdutoBusiness, IScopedDependecy<IProdutoBusine
     {
         var produto = _produtoRepository.BuscaPorId(id);
         if(produto == null)
-            throw new ApiException("Produto não existe na base de dados ou já foi deletado");
+            throw new NotFoundException("Produto não existe na base de dados ou já foi deletado");
         _produtoRepository.DeleteProduto(produto);
         return true;
     }
 
     public Produto GetProduto(int id)
     {
-        return _produtoRepository.BuscaPorId(id);
+        var produto = _produtoRepository.BuscaPorId(id);
+        if (produto == null)
+            throw new NotFoundException("Produto não existe");
+        return produto;
     }
 
     public Produto GetProdutoPorCodBarras(string id)

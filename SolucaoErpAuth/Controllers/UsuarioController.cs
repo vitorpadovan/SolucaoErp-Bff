@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using SolucaoErpAuth.Data.Dtos;
 using SolucaoErpAuth.Services;
+using SolucaoErpDomain.GlobalServices.Interfaces;
+using System.Security.Claims;
 
 namespace SolucaoErpAuth.Controllers
 {
@@ -11,19 +13,30 @@ namespace SolucaoErpAuth.Controllers
     {
         private UsuarioService _usuarioService;
         private IHttpContextAccessor httpContextAccessor ;
+        private IGlobalApplicationService teste222;
 
-        public UsuarioController(UsuarioService cadastroService, IHttpContextAccessor httpContextAccessor)
+
+        public UsuarioController(UsuarioService cadastroService, IHttpContextAccessor httpContextAccessor, IGlobalApplicationService teste)
         {
             _usuarioService = cadastroService;
             this.httpContextAccessor = httpContextAccessor;
+            this.teste222 = teste;
         }
 
-        [HttpGet("teste")]
+        [HttpGet("username")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public string teste()
+        public string GetUsername()
         {
-            var claim = httpContextAccessor.HttpContext.User.Claims;
-            return "asd";
+            try
+            {
+                var claim = httpContextAccessor.HttpContext.User.Claims;
+                var userName = claim.FirstOrDefault(c => c.Type == "username");
+                return userName.Value;
+            }
+            catch(Exception ex)
+            {
+                return "";
+            }
         }
 
         [HttpPost("cadastro")]
