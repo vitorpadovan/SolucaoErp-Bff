@@ -3,10 +3,10 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>a2ad4592-3353-43c9-b559-beed237c67c8</ProjectGuid>
+    <ProjectGuid>02552a6f-91f6-4801-9a01-f6ee7b2f68ad</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>solucaoerp</DockerServiceName>
+    <DockerServiceName>solucaoerpauth</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

@@ -5,7 +5,8 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "importproduct": "StartDebugging",
-        "solucaoerp": "StartDebugging"
+        "solucaoerp": "StartDebugging",
+        "solucaoerpauth": "StartDebugging"
       }
     }
   }

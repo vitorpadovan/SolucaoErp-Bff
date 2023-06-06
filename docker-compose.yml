@@ -1,11 +1,11 @@
 version: '3.4'
 
 services:
-  importproduct:
-    image: ${DOCKER_REGISTRY-}importproduct
+  solucaoerpauth:
+    image: ${DOCKER_REGISTRY-}solucaoerpauth
     build:
       context: .
-      dockerfile: ImportProduct/Dockerfile
+      dockerfile: SolucaoErpAuth/Dockerfile
 
   solucaoerp:
     image: ${DOCKER_REGISTRY-}solucaoerp
