@@ -11,8 +11,8 @@ using SolucaoErpAuth.Data;
 namespace SolucaoErpAuth.Migrations
 {
     [DbContext(typeof(UsuarioDbContext))]
-    [Migration("20230425000754_M1")]
-    partial class M1
+    [Migration("20230621231526_m1")]
+    partial class m1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -10,8 +10,8 @@ using SolucaoErp.Repository;
 namespace SolucaoErp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20230408013608_Inicial-2")]
-    partial class Inicial2
+    [Migration("20230621231454_m1")]
+    partial class m1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace SolucaoErp.Migrations
                 .HasAnnotation("ProductVersion", "7.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("SolucaoErp.Model.Categoria", b =>
+            modelBuilder.Entity("SolucaoErpDomain.Model.Categoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,7 +39,7 @@ namespace SolucaoErp.Migrations
                     b.ToTable("Categoria");
                 });
 
-            modelBuilder.Entity("SolucaoErp.Model.Produto", b =>
+            modelBuilder.Entity("SolucaoErpDomain.Model.Produto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,6 +47,9 @@ namespace SolucaoErp.Migrations
 
                     b.Property<int>("CategoriaId")
                         .HasColumnType("int");
+
+                    b.Property<string>("CodigoBarras")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -66,9 +69,9 @@ namespace SolucaoErp.Migrations
                     b.ToTable("Produto");
                 });
 
-            modelBuilder.Entity("SolucaoErp.Model.Produto", b =>
+            modelBuilder.Entity("SolucaoErpDomain.Model.Produto", b =>
                 {
-                    b.HasOne("SolucaoErp.Model.Categoria", "Categoria")
+                    b.HasOne("SolucaoErpDomain.Model.Categoria", "Categoria")
                         .WithMany()
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)

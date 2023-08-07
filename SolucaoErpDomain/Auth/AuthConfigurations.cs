@@ -17,13 +17,14 @@ namespace SolucaoErpDomain.Auth
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
         };
-        public static Action<JwtBearerOptions> jwtOptions = options => options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        public static Action<JwtBearerOptions> jwtOptions = options => options.TokenValidationParameters = 
+        new Microsoft.IdentityModel.Tokens.TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("-JaNdRgUkXn2r5u8x/A?D(G+KbPeShVmYq3s6v9y$B&E)H@McQfTjWnZr4u7w!z%")),
             ValidateAudience = false,
             ValidateIssuer = false,
-            ClockSkew = TimeSpan.Zero
+            ClockSkew = TimeSpan.Zero,
         };
     }
 }

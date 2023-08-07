@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SolucaoErp.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial : Migration
+    public partial class m1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -39,7 +39,9 @@ namespace SolucaoErp.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Descricao = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CategoriaId = table.Column<int>(type: "int", nullable: false)
+                    CategoriaId = table.Column<int>(type: "int", nullable: false),
+                    CodigoBarras = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -56,7 +58,8 @@ namespace SolucaoErp.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Categoria_Nome",
                 table: "Categoria",
-                column: "Nome");
+                column: "Nome",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produto_CategoriaId",

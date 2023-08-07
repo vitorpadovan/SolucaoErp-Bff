@@ -6,7 +6,7 @@ using SolucaoErp.Repository;
 
 #nullable disable
 
-namespace SolucaoErpDomain.Migrations
+namespace SolucaoErp.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
     partial class RepositoryContextModelSnapshot : ModelSnapshot

@@ -39,8 +39,15 @@ namespace SolucaoErpAuth.Controllers
             }
         }
 
+        [HttpGet("session")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public string GetSession()
+        {
+            return "asdasd";
+        }
+
         [HttpPost("cadastro")]
-        public async Task<IActionResult> CadastraUsuario(CreateUsuarioDto dto)
+        public async Task<IActionResult>    CadastraUsuario(CreateUsuarioDto dto)
         {
             await _usuarioService.CadastraUsuario(dto);
             return Ok("Usuário cadastrado!");
