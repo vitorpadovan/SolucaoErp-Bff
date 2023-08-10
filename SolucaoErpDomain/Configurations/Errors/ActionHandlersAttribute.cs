@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using SolucaoErp.Configuration.ErrorsApi;
+using SolucaoErpDomain.Configuration.ErrorsApi;
 
-namespace SolucaoErp.Configuration
+namespace SolucaoErpDomain.Configurations.Errors
 {
     public class ActionHandlersAttribute : ActionFilterAttribute
     {
@@ -31,7 +31,7 @@ namespace SolucaoErp.Configuration
 
         public override void OnActionExecuted(ActionExecutedContext context)
         {
-            if(context.Exception is NotFoundException)
+            if (context.Exception is NotFoundException)
             {
                 var apiException = (ApiException)context.Exception;
                 var errorResponse = new ResponseData() { Successful = false, Message = "Erro generalizado da API", codError = 1 };

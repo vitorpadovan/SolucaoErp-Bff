@@ -1,4 +1,4 @@
-﻿namespace SolucaoErp.Configuration.ErrorsApi;
+﻿namespace SolucaoErpDomain.Configuration.ErrorsApi;
 public class ResponseData
 {
     public bool Successful { get; set; }

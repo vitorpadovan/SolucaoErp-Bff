@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace SolucaoErp.Configuration.ErrorsApi
+namespace SolucaoErpDomain.Configuration.ErrorsApi
 {
     public class ApiException : Exception
     {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SolucaoErpDomain.Model;
 using SolucaoErp.Repository.Config;
+using SolucaoErpDomain.Model;
+using SolucaoErpDomain.Repository.Cfg;
 
 namespace SolucaoErp.Repository
 {
@@ -40,7 +41,7 @@ namespace SolucaoErp.Repository
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new DbProdutoCgf());
+            modelBuilder.ApplyConfiguration(new DbProdutoCfg());
             modelBuilder.ApplyConfiguration(new DbCategoriaCgf());
         }
     }

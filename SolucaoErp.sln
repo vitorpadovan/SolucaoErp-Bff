@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arquivos Solução", "Arqui
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{02552A6F-91F6-4801-9A01-F6EE7B2F68AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistroDePreco", "RegistroDePreco\RegistroDePreco.csproj", "{A085226D-1632-4B4C-8E56-9A39FA510DFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{02552A6F-91F6-4801-9A01-F6EE7B2F68AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02552A6F-91F6-4801-9A01-F6EE7B2F68AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02552A6F-91F6-4801-9A01-F6EE7B2F68AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A085226D-1632-4B4C-8E56-9A39FA510DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A085226D-1632-4B4C-8E56-9A39FA510DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A085226D-1632-4B4C-8E56-9A39FA510DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A085226D-1632-4B4C-8E56-9A39FA510DFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

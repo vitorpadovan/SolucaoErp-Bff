@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SolucaoErp.Migrations
+namespace RegistroDePreco.Migrations
 {
     /// <inheritdoc />
     public partial class m1 : Migration
@@ -20,12 +20,27 @@ namespace SolucaoErp.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(type: "varchar(255)", nullable: false)
+                    Nome = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categoria", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "RegistroPreco",
+                columns: table => new
+                {
+                    codRegistro = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    barCode = table.Column<long>(type: "bigint", nullable: false),
+                    price = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegistroPreco", x => x.codRegistro);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -40,7 +55,7 @@ namespace SolucaoErp.Migrations
                     Descricao = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CategoriaId = table.Column<int>(type: "int", nullable: false),
-                    CodigoBarras = table.Column<string>(type: "longtext", nullable: true)
+                    CodigoBarras = table.Column<string>(type: "varchar(255)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -56,21 +71,26 @@ namespace SolucaoErp.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categoria_Nome",
-                table: "Categoria",
-                column: "Nome",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Produto_CategoriaId",
                 table: "Produto",
                 column: "CategoriaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Produto_CodigoBarras",
+                table: "Produto",
+                column: "CodigoBarras",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produto_Nome",
                 table: "Produto",
                 column: "Nome",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RegistroPreco_barCode",
+                table: "RegistroPreco",
+                column: "barCode");
         }
 
         /// <inheritdoc />
@@ -78,6 +98,9 @@ namespace SolucaoErp.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Produto");
+
+            migrationBuilder.DropTable(
+                name: "RegistroPreco");
 
             migrationBuilder.DropTable(
                 name: "Categoria");
