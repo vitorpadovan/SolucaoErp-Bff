@@ -17,7 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arquivos Solução", "Arqui
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{02552A6F-91F6-4801-9A01-F6EE7B2F68AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistroDePreco", "RegistroDePreco\RegistroDePreco.csproj", "{A085226D-1632-4B4C-8E56-9A39FA510DFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistroDePreco", "RegistroDePreco\RegistroDePreco.csproj", "{A085226D-1632-4B4C-8E56-9A39FA510DFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D8B3DFCB-033F-4E27-9EE1-E9EFF7D92B7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

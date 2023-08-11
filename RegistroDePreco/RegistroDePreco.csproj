@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SolucaoErp-Bff\SolucaoErpDomain\SolucaoErpDomain.csproj" />
+    <ProjectReference Include="..\SolucaoErpDomain\SolucaoErpDomain.csproj" />
   </ItemGroup>
 
 </Project>
