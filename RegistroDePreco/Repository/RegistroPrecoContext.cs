@@ -10,6 +10,8 @@ namespace RegistroDePreco.Repository
     {
         public DbSet<RegistroPreco> RegistroPrecos { get; set; }
         public DbSet<Produto> Produto { get; set; }
+        public DbSet<Pdv> Pdv { get; set; }
+        public DbSet<ExtratoDePonto> ExtratoPonto { get; set; }
         public RegistroPrecoContext(DbContextOptions options) : base(options)
         {
         }
@@ -77,6 +79,8 @@ namespace RegistroDePreco.Repository
         {
             modelBuilder.ApplyConfiguration(new DbProdutoCfg());
             modelBuilder.ApplyConfiguration(new DbRegistroPrecoCfg());
+            modelBuilder.ApplyConfiguration(new DbPdvCfg());
+            modelBuilder.ApplyConfiguration(new DbExtratoDePontoCfg());
         }
     }
 }

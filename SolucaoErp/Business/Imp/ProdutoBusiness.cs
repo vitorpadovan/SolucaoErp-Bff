@@ -1,11 +1,10 @@
 ﻿using SolucaoErp.Business.Interfaces;
-using SolucaoErp.Configuration.ErrorsApi;
 using SolucaoErp.Controllers.Requests.Produto;
-using SolucaoErpDomain.Model;
-using SolucaoErp.Repository.Imp;
 using SolucaoErp.Repository.Interfaces;
+using SolucaoErpDomain.Configuration.ErrorsApi;
 using SolucaoErpDomain.Configurations;
 using SolucaoErpDomain.Exceptions;
+using SolucaoErpDomain.Model;
 
 namespace SolucaoErp.Business.Imp;
 public class ProdutoBusiness : IProdutoBusiness, IScopedDependecy<IProdutoBusiness, ProdutoBusiness>
@@ -38,7 +37,7 @@ public class ProdutoBusiness : IProdutoBusiness, IScopedDependecy<IProdutoBusine
     public bool DeleteProduto(int id)
     {
         var produto = _produtoRepository.BuscaPorId(id);
-        if(produto == null)
+        if (produto == null)
             throw new NotFoundException("Produto não existe na base de dados ou já foi deletado");
         _produtoRepository.DeleteProduto(produto);
         return true;
@@ -83,7 +82,7 @@ public class ProdutoBusiness : IProdutoBusiness, IScopedDependecy<IProdutoBusine
         if (banco != null)
             throw new ApiException("Produto já existe na base");
         var categoria = _categoriaRepository.BuscaPorId(p.Categoria.Value);
-        if(categoria == null)
+        if (categoria == null)
             throw new ApiException("Não foi encontrada categoria para o produto");
         var resultado = new Produto()
         {

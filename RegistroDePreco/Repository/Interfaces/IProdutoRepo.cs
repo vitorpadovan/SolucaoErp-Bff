@@ -6,5 +6,7 @@ namespace RegistroDePreco.Repository.Interfaces
     {
         public Produto GetProduto(int cod);
         public Produto? GetProduto(string barCode);
+
+        public Produto SalvarProduto(Produto produto);
     }
 }

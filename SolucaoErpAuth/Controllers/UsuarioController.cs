@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using SolucaoErpAuth.Data.Dtos;
 using SolucaoErpAuth.Services;
 using SolucaoErpDomain.GlobalServices.Interfaces;
-using System.Security.Claims;
 
 namespace SolucaoErpAuth.Controllers
 {
@@ -12,7 +11,7 @@ namespace SolucaoErpAuth.Controllers
     public class UsuarioController : ControllerBase
     {
         private UsuarioService _usuarioService;
-        private IHttpContextAccessor httpContextAccessor ;
+        private IHttpContextAccessor httpContextAccessor;
         private IGlobalApplicationService teste222;
 
 
@@ -33,7 +32,7 @@ namespace SolucaoErpAuth.Controllers
                 var userName = claim.FirstOrDefault(c => c.Type == "username");
                 return userName.Value;
             }
-            catch(Exception ex)
+            catch (Exception)
             {
                 return "";
             }
@@ -47,7 +46,7 @@ namespace SolucaoErpAuth.Controllers
         }
 
         [HttpPost("cadastro")]
-        public async Task<IActionResult>    CadastraUsuario(CreateUsuarioDto dto)
+        public async Task<IActionResult> CadastraUsuario(CreateUsuarioDto dto)
         {
             await _usuarioService.CadastraUsuario(dto);
             return Ok("Usuário cadastrado!");

@@ -4,6 +4,6 @@ namespace RegistroDePreco.Business.Interfaces
 {
     public interface IRegistroPrecoBusiness
     {
-        public void RegistrarPreco(RegistroPreco registro);
+        public RegistroPreco RegistrarPreco(RegistroPreco registro);
     }
 }

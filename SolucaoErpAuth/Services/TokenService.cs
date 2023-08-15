@@ -18,9 +18,8 @@ namespace SolucaoErpAuth.Services
         {
             Claim[] claims = new Claim[]
             {
-                new Claim("username", usuario.UserName),
-                new Claim("id", usuario.Id),
-                //new Claim(ClaimTypes.DateOfBirth, usuario.DataNascimento.ToString()),
+                new Claim(ClaimTypes.UserData, usuario.UserName),
+                new Claim(ClaimTypes.Sid, usuario.Id),
                 new Claim("loginTimestamp", DateTime.UtcNow.ToString())
             };
 

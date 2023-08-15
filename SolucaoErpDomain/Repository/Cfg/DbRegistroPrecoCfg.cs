@@ -16,7 +16,6 @@ namespace SolucaoErpDomain.Repository.Cfg
 
         protected override void Indices(EntityTypeBuilder<RegistroPreco> cfg)
         {
-            cfg.HasIndex(p => p.barCode);
 
         }
 

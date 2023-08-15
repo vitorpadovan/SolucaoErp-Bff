@@ -1,9 +1,9 @@
 ﻿using SolucaoErp.Business.Interfaces;
-using SolucaoErp.Configuration.ErrorsApi;
 using SolucaoErp.Controllers.Requests.Categoria;
-using SolucaoErpDomain.Model;
 using SolucaoErp.Repository.Interfaces;
+using SolucaoErpDomain.Configuration.ErrorsApi;
 using SolucaoErpDomain.Configurations;
+using SolucaoErpDomain.Model;
 
 namespace SolucaoErp.Business.Imp;
 public class CategoriaBusiness : ICategoriaBusiness, IScopedDependecy<ICategoriaBusiness, CategoriaBusiness>
@@ -38,7 +38,7 @@ public class CategoriaBusiness : ICategoriaBusiness, IScopedDependecy<ICategoria
         if (categoria == null)
             throw new ApiException($@"Categoria com o código {id} não existe no banco ou já foi deletada");
         var produtosAssociados = this._produtoRepository.GetProdutosPorCategoria(id);
-        if(produtosAssociados != null && produtosAssociados.Count() > 0)
+        if (produtosAssociados != null && produtosAssociados.Count() > 0)
             throw new ApiException($@"Categoria com o código {id} possui {produtosAssociados.Count()} produtos associados e não pode ser deletado");
         return this._categoriaRepository.DeletarCategoria(categoria);
     }

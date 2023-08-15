@@ -20,8 +20,7 @@ namespace RegistroDePreco.Controllers
         [Authorize]
         public IActionResult Index(RegistrarPrecoRequest request)
         {
-            _registroPrecoBusiness.RegistrarPreco(request);
-            return Ok(request);
+            return Ok(_registroPrecoBusiness.RegistrarPreco(request));
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using RegistroDePreco.Repository.Interfaces;
-using SolucaoErpDomain.Configuration.ErrorsApi;
 using SolucaoErpDomain.Configurations;
 using SolucaoErpDomain.Model;
 using System.Data.Common;
@@ -31,10 +30,14 @@ namespace RegistroDePreco.Repository.Implementation
 
         public Produto? GetProduto(string barCode)
         {
-            var resultado = _dbContext.Produto.Where(p => p.CodigoBarras == barCode).SingleOrDefault();
-            if (resultado == null)
-                throw new NotFoundException($"Produto com o código de barras {barCode} não encontrado");
-            return resultado;
+            return _dbContext.Produto.Where(p => p.CodigoBarras == barCode).SingleOrDefault();
+        }
+
+        public Produto SalvarProduto(Produto produto)
+        {
+            this._dbContext.Produto.Add(produto);
+            this._dbContext.SaveChanges();
+            return produto;
         }
     }
 }

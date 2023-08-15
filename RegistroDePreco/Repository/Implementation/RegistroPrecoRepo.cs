@@ -11,7 +11,8 @@ namespace RegistroDePreco.Repository.Implementation
 
         private readonly Func<DbDataReader, RegistroPreco> extractFunction = (v) => new RegistroPreco()
         {
-            barCode = v.GetInt64(v.GetOrdinal("barCode"))
+            //barCode = v.GetInt64(v.GetOrdinal("barCode"))
+            //TODO corrigir isso
         };
 
         private String GetBaseSql()
@@ -29,11 +30,12 @@ namespace RegistroDePreco.Repository.Implementation
             this._context.ExecutaTypedSql<RegistroPreco>(GetBaseSql(), extractFunction);
         }
 
-        public void Salvar(RegistroPreco registro)
+        public RegistroPreco Salvar(RegistroPreco registro)
         {
             this._context.ExecutaTypedSql<RegistroPreco>(GetBaseSql(), extractFunction);
             this._context.RegistroPrecos.Add(registro);
             this._context.SaveChanges();
+            return registro;
         }
     }
 }

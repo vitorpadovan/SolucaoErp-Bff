@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SolucaoErpDomain.Model;
 
 namespace SolucaoErpDomain.Repository.Cfg
@@ -24,6 +25,7 @@ namespace SolucaoErpDomain.Repository.Cfg
         protected override void Keys(EntityTypeBuilder<Produto> cfg)
         {
             cfg.HasKey(p => p.Id);
+            cfg.ToTable("Produto");
         }
     }
 }

@@ -4,7 +4,7 @@ namespace RegistroDePreco.Repository.Interfaces
 {
     public interface IRegistroPrecoRepo
     {
-        public void Salvar(RegistroPreco registro);
+        public RegistroPreco Salvar(RegistroPreco registro);
 
         public void ListarPrecos();
     }
